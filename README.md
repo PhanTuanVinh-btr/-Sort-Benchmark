@@ -191,10 +191,6 @@ if (mx == i) break;
 
 * **Sử dụng buffer tĩnh:** ```cpp
 char* buffer = new char[n * 101];
-```
-
-```
-
 
 * **Tối ưu I/O:** Sử dụng hoàn toàn `scanf` và `printf` thay vì `cin`/`cout`.
 
