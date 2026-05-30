@@ -1,10 +1,10 @@
-# 📊 BÁO CÁO CẤU TRÚC DỮ LIỆU VÀ GIẢI THUẬT
+BÁO CÁO CẤU TRÚC DỮ LIỆU VÀ GIẢI THUẬT
 
 **Môn học:** Cấu trúc dữ liệu và giải thuật
 
 **Thời gian học:** Học kỳ II năm học 2025 - 2026
 
-### 👥 Danh sách sinh viên
+###  Danh sách sinh viên
 
 | STT | Họ và tên | MSSV |
 | --- | --- | --- |
