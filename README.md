@@ -14,7 +14,7 @@ BÁO CÁO CẤU TRÚC DỮ LIỆU VÀ GIẢI THUẬT
 
 ---
 
-## 📑 Mục lục
+##  Mục lục
 
 1. [I. Integer Sort]
 * [1. Thuật toán tốt nhất ở lần chạy thứ nhất]
