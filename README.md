@@ -16,25 +16,25 @@
 
 ## 📑 Mục lục
 
-1. [I. Integer Sort](https://www.google.com/search?q=%23i-integer-sort)
-* [1. Thuật toán tốt nhất ở lần chạy thứ nhất](https://www.google.com/search?q=%231-thu%E1%BA%ADt-to%C3%A1n-t%E1%BB%91t-nh%E1%BA%A5t-%E1%BB%9F-l%E1%BA%A7n-ch%E1%BA%A1y-th%E1%BB%A9-nh%E1%BA%A5t)
-* [2. Cải tiến thuật toán (Lần chạy thứ hai)](https://www.google.com/search?q=%232-c%E1%BA%A3i-ti%E1%BA%BFn-thu%E1%BA%ADt-to%C3%A1n-l%E1%BA%A7n-ch%E1%BA%A1y-th%E1%BB%A9-hai)
-* [3. Kết luận](https://www.google.com/search?q=%233-k%E1%BA%BFt-lu%E1%BA%ADn)
+1. [I. Integer Sort]
+* [1. Thuật toán tốt nhất ở lần chạy thứ nhất]
+* [2. Cải tiến thuật toán (Lần chạy thứ hai)]
+* [3. Kết luận]
 
 
-2. [II. Lexicographic Sort](https://www.google.com/search?q=%23ii-lexicographic-sort)
-* [1. Thuật toán tốt nhất ở lần chạy thứ nhất](https://www.google.com/search?q=%231-thu%E1%BA%ADt-to%C3%A1n-t%E1%BB%91t-nh%E1%BA%A5t-%E1%BB%9F-l%E1%BA%A7n-ch%E1%BA%A1y-th%E1%BB%A9-nh%E1%BA%A5t-1)
-* [2. Thuật toán tốt nhất ở lần chạy thứ hai](https://www.google.com/search?q=%232-thu%E1%BA%ADt-to%C3%A1n-t%E1%BB%91t-nh%E1%BA%A5t-%E1%BB%9F-l%E1%BA%A7n-ch%E1%BA%A1y-th%E1%BB%A9-hai)
-* [3. Kết luận](https://www.google.com/search?q=%233-k%E1%BA%BFt-lu%E1%BA%ADn-1)
+2. [II. Lexicographic Sort]
+* [1. Thuật toán tốt nhất ở lần chạy thứ nhất]
+* [2. Thuật toán tốt nhất ở lần chạy thứ hai]
+* [3. Kết luận]
 
 
-3. [III. Length-aware Lexicographic String Sort](https://www.google.com/search?q=%23iii-length-aware-lexicographic-string-sort)
-* [1. Thuật toán tốt nhất ở lần chạy thứ nhất](https://www.google.com/search?q=%231-thu%E1%BA%ADt-to%C3%A1n-t%E1%BB%91t-nh%E1%BA%A5t-%E1%BB%9F-l%E1%BA%A7n-ch%E1%BA%A1y-th%E1%BB%A9-nh%E1%BA%A5t-2)
-* [2. Thuật toán tốt nhất ở lần chạy thứ hai](https://www.google.com/search?q=%232-thu%E1%BA%ADt-to%C3%A1n-t%E1%BB%91t-nh%E1%BA%A5t-%E1%BB%9F-l%E1%BA%A7n-ch%E1%BA%A1y-th%E1%BB%A9-hai-1)
-* [3. Kết luận](https://www.google.com/search?q=%233-k%E1%BA%BFt-lu%E1%BA%ADn-2)
+3. [III. Length-aware Lexicographic String Sort]
+* [1. Thuật toán tốt nhất ở lần chạy thứ nhất]
+* [2. Thuật toán tốt nhất ở lần chạy thứ hai]
+* [3. Kết luận]
 
 
-4. [IV. Thiết kế bộ sinh test](https://www.google.com/search?q=%23iv-thi%E1%BA%BFt-k%E1%BA%BF-b%E1%BB%99-sinh-test)
+4. [IV. Thiết kế bộ sinh test]
 
 ---
 
@@ -138,17 +138,14 @@ Không gian chiếm dụng giảm mạnh xuống còn: $256 \times 4 \text{ byte
 
 #### 2.3 So sánh benchmark
 
-| Thành phần | Lần 1 (Radix Sort 16-bit) | Lần 2 (Radix Sort 8-bit) 🏆 |
+| Thành phần | Lần 1 (Radix Sort 16-bit) | Lần 2 (Radix Sort 8-bit)  |
 | --- | --- | --- |
 | **Số Pass** | 2 | 4 |
 | **Bộ nhớ mảng đếm** | $\approx 256$ KB | **$\approx 1$ KB** |
 | **Độ phức tạp** | $\mathcal{O}(N)$ | $\mathcal{O}(N)$ |
 
-> 💡 **Nhận xét:** Việc giảm kích thước mảng đếm giúp khả năng tận dụng CPU Cache tăng vọt. Thuật toán **Radix Sort 8-bit** cho kết quả thời gian thực thi ổn định và vượt trội hơn trên các bộ test khắc nghiệt, xứng đáng là lựa chọn tốt nhất.
 
-#### 2.4 Kết quả đạt được
-
-Sau khi tối ưu, phiên bản Radix Sort 8-bit cho kết quả ổn định hơn. Việc giảm chi phí truy cập bộ nhớ RAM vật lý bù đắp hoàn toàn cho việc tăng số lượt xử lý. Tuy nhiên, thuật toán vẫn là Out-of-place (cần mảng `temp` $\mathcal{O}(N)$).
+Sau khi tối ưu, phiên bản Radix Sort 8-bit cho kết quả ổn định hơn. Việc giảm chi phí truy cập bộ nhớ RAM vật lý bù đắp hoàn toàn cho việc tăng số lượt xử lý. Tuy nhiên, thuật toán vẫn là Out-of-place (cần mảng `temp` O(N)).
 
 ---
 
@@ -248,13 +245,13 @@ cin.tie(NULL); cout.tie(NULL);
 
 #### 2.3 So sánh với lần 1
 
-| Thành phần | Lần 1 (Heap Sort) | Lần 2 (MSD Radix Sort) 🏆 |
+| Thành phần | Lần 1 (Heap Sort) | Lần 2 (MSD Radix Sort)  |
 | --- | --- | --- |
 | **Thời gian chạy** | $\mathcal{O}(N \log N \cdot L)$ | Nhanh hơn: **$\mathcal{O}(N \cdot L)$** |
 | **Cache locality** | Kém (Nhảy cóc) | **Khá** (Truy cập tuần tự) |
 | **Số phép so sánh** | $\mathcal{O}(N \log N)$ phép so sánh chuỗi | **Không có phép so sánh chuỗi** |
 
-> 💡 **Nhận xét:** MSD Radix Sort giải quyết triệt để vấn đề so sánh lại các tiền tố (prefix) chung, mang lại tốc độ đột phá về mặt tính toán logic.
+
 
 #### 2.4 Kết quả đạt được
 
@@ -331,13 +328,12 @@ vector<string> temp(n);
 
 #### 2.3 So sánh hiệu năng
 
-| Thành phần | Lần 1 (Merge Sort Cơ bản) | Lần 2 (Merge Sort Tối ưu Memory) 🏆 |
+| Thành phần | Lần 1 (Merge Sort Cơ bản) | Lần 2 (Merge Sort Tối ưu Memory)  |
 | --- | --- | --- |
 | **Bộ nhớ** | Cấp phát liên tục | **Tái sử dụng buffer** |
 | **Số phép copy** | Rất nhiều | **Ít hơn (Dùng `std::move`)** |
 | **Memory traffic** | Cao | **Thấp** |
 
-> 💡 **Nhận xét:** Chỉ với việc tái sử dụng bộ nhớ và áp dụng Move Semantics của C++ hiện đại, thuật toán đã loại bỏ hoàn toàn các nút thắt cổ chai về hệ thống cấp phát RAM.
 
 #### 2.4 Kết quả đạt được
 
