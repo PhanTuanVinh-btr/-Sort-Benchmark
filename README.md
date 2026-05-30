@@ -211,11 +211,13 @@ Thuật toán được sử dụng ở lần chạy đầu tiên là Merge Sort 
 1.	Ưu tiên độ dài chuỗi nhỏ hơn.
 2.	Nếu độ dài bằng nhau thì so sánh từ điển (lexicographic).
 Thuật toán sử dụng phương pháp chia để trị (divide and conquer), chia mảng thành hai nửa rồi tiến hành trộn lại theo thứ tự đã sắp xếp.
-________________________________________
+
 2.2. Ý tưởng cài đặt
 Thuật toán hoạt động theo các bước:
 1.	Chia mảng chuỗi thành hai nửa liên tục.
+
 2.	Đệ quy sắp xếp từng nửa.
+
 3.	Trộn hai mảng con đã sắp xếp bằng hàm merge.
 Trong quá trình merge:
 •	Tạo hai vector phụ l và r.
@@ -225,36 +227,37 @@ Trong quá trình merge:
 Điều kiện so sánh:
 •	Chuỗi có độ dài ngắn hơn sẽ đứng trước.
 •	Nếu độ dài bằng nhau thì so sánh theo thứ tự từ điển.
-________________________________________
+
 2.3. Các kỹ thuật tối ưu hóa đã sử dụng
 a) Tối ưu thuật toán
 •	Sử dụng Merge Sort với độ phức tạp ổn định O(n log n).
 •	Tách riêng hàm so sánh giúp dễ tối ưu và dễ mở rộng.
 •	Giảm số lần xử lý điều kiện trong merge.
+
 b) Tối ưu bộ nhớ
 •	Dùng vector<string> để quản lý bộ nhớ tự động.
 •	Chỉ tạo mảng phụ theo từng lần merge.
 Tuy nhiên:
 •	Mỗi lần merge đều cấp phát mới hai vector l và r.
 •	Việc sao chép chuỗi gây tốn bộ nhớ và thời gian.
+
 c) Tối ưu CPU
 •	Sử dụng recursion depth cân bằng.
 •	Truy cập dữ liệu tuần tự giúp cache locality tốt hơn Quick Sort trong nhiều trường hợp.
+
 d) Tối ưu nhập/xuất
 •	Sử dụng:
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-
-
 •	Tránh dùng endl để hạn chế flush buffer không cần thiết.
-________________________________________
+
 2.4. Phân tích độ phức tạp
 Trường hợp	Độ phức tạp
 Best case	O(n log n)
 Average case	O(n log n)
 Worst case	O(n log n)
 Memory usage	O(n)
-________________________________________
+
 2.5. Lý do thuật toán này tốt nhất ở lần 1
 Trong bài toán benchmark sắp xếp chuỗi theo:
 1.	Độ dài chuỗi tăng dần.
@@ -265,7 +268,7 @@ Merge Sort luôn có độ phức tạp:
 •	O(n log n) ở mọi trường hợp.
 •	Không bị rơi vào worst-case O(n²) như Quick Sort khi dữ liệu có phân bố xấu.
 Điều này rất quan trọng trong benchmark vì bảng xếp hạng dựa trên test chạy chậm nhất.
-________________________________________
+
 b) Phù hợp với dữ liệu chuỗi
 Trong đề bài, mỗi phép so sánh chuỗi có thể tốn nhiều thời gian do:
 •	Độ dài chuỗi từ 10 đến 100 ký tự.
@@ -274,7 +277,7 @@ Merge Sort giúp giảm rủi ro phát sinh quá nhiều phép so sánh không c
 •	Chia dữ liệu cân bằng.
 •	Số lần merge ổn định.
 •	Không phụ thuộc vào pivot như Quick Sort.
-________________________________________
+
 c) Hoạt động tốt với dữ liệu lớn
 Với số lượng dữ liệu lên tới:
 n ≤ 10^4
@@ -283,17 +286,15 @@ Merge Sort vẫn đảm bảo:
 •	Hiệu năng ổn định.
 •	Không bị giảm mạnh tốc độ trên các test đặc biệt.
 •	Dễ kiểm soát recursion depth.
-________________________________________
+
 d) Dễ cài đặt và đảm bảo tính đúng đắn
 Phiên bản lần 1 ưu tiên:
 •	Tính ổn định.
 •	Dễ kiểm tra correctness.
 •	Hạn chế bug trong benchmark.
 Việc sử dụng:
-vector<string>
+vector<string> và chia merge rõ ràng giúp thuật toán dễ debug và đảm bảo thứ tự sắp xếp chính xác theo yêu cầu đề bài.
 
-và chia merge rõ ràng giúp thuật toán dễ debug và đảm bảo thứ tự sắp xếp chính xác theo yêu cầu đề bài.
-________________________________________
 e) Những hạn chế còn tồn tại
 Mặc dù đạt hiệu năng khá tốt, phiên bản lần 1 vẫn còn một số điểm chưa tối ưu:
 •	Cấp phát vector phụ liên tục trong mỗi lần merge.
@@ -301,6 +302,7 @@ Mặc dù đạt hiệu năng khá tốt, phiên bản lần 1 vẫn còn một 
 •	Chưa tận dụng move semantics.
 •	Memory traffic còn cao.
 Các hạn chế này trở thành mục tiêu tối ưu trong phiên bản lần chạy thứ hai.
+
 4. Thuật toán tốt nhất ở lần chạy thứ hai
 4.1. Ý tưởng cải tiến
 Phiên bản thứ hai tiếp tục sử dụng Merge Sort nhưng được tối ưu mạnh hơn về bộ nhớ và thao tác dữ liệu.
@@ -313,7 +315,7 @@ Các cải tiến:
 •	Tái sử dụng buffer trong toàn bộ quá trình merge sort.
 •	Dùng std::move() để giảm copy string.
 •	Giảm số lần cấp phát động.
-________________________________________
+
 4.2. Các tối ưu mới
 a) Tối ưu thuật toán
 •	Giữ nguyên Merge Sort vì tính ổn định cao.
@@ -322,11 +324,10 @@ b) Tối ưu CPU/cache
 •	Truy cập bộ nhớ liên tục hơn.
 •	Tăng cache locality.
 •	Giảm memory traffic.
+
 c) Tối ưu bộ nhớ
 •	Chỉ cấp phát temp một lần:
 vector<string> temp(n);
-
-
 •	Tái sử dụng buffer cho mọi lần merge.
 •	Giảm allocation overhead.
 d) Tối ưu I/O
@@ -334,7 +335,6 @@ Tiếp tục sử dụng fast I/O:
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
 
-________________________________________
 4.3. So sánh với lần 1
 Thành phần	Lần 1	Lần 2
 Thời gian chạy	Chậm hơn	Nhanh hơn
@@ -343,7 +343,7 @@ Cache locality	Trung bình	Tốt hơn
 Số phép copy	Nhiều	Ít hơn
 Move semantics	Không	Có
 Memory traffic	Cao	Thấp hơn
-________________________________________
+
 4.4. Kết quả đạt được
 Phiên bản thứ hai đạt được nhiều cải thiện rõ rệt:
 •	Giảm thời gian chạy trên dữ liệu lớn.
@@ -357,7 +357,7 @@ Phiên bản thứ hai đạt được nhiều cải thiện rõ rệt:
 Tuy nhiên:
 •	Thuật toán vẫn cần bộ nhớ phụ O(n).
 •	Chi phí so sánh chuỗi vẫn còn lớn khi prefix dài.
-________________________________________
+
 5. Kết luận
 Qua quá trình benchmark và tối ưu, phiên bản Merge Sort lần 2 cho hiệu năng tốt hơn đáng kể nhờ:
 •	Tái sử dụng buffer.
@@ -375,24 +375,28 @@ IV.	Thiết kế bộ sinh test
 3.1. Chiến lược cấu hình dữ liệu
 •	Công cụ sinh: Bộ sinh số ngẫu nhiên chuẩn std::mt19937 kết hợp hằng số seed cố định 2026 để đảm bảo tính đồng nhất trên mọi máy chấm.
 •	Kích thước mẫu: Đẩy lên mức biên tối hạn của đề bài: N = 100.000 (đối với int và strlexi) và N = 10.000 (đối với strlenlexi).
+
 3.2. Cấu trúc hệ thống bộ test đối kháng cho Bài A (int)
 •	Test 1 (Random Range): Sinh ngẫu nhiên phân bổ đều trên toàn dải [-2^31, 2^31 - 1] nhằm tấn công các cấu trúc Radix Sort 16-bit thiếu tối ưu cache.
 •	Test 2 (Reverse Sorted): Dãy số giảm dần tuyến tính tuyệt đối từ 100.000 về 1 nhằm phá hủy Timsort hoặc Insertion Sort cài tay.
 •	Test 3 (Extreme Alternating Values): Luân phiên đan xen liên tục giữa -2147483648 và 2147483647 để đánh bẫy các thuật toán Quicksort phân vùng 2 đường.
 •	Test 4 (All Equal): Toàn bộ mảng là một hằng số cố định nhằm triệt hạ Quicksort thiếu kỹ thuật phân hoạch 3 đường.
 •	Test 5 (Multiples of 65536): Toàn bộ mảng là bội số chính xác của hằng số 65536 (2^16) để tạo bẫy xung đột thùng chứa đối với Radix Sort 16-bit.
+
 3.3. Cấu trúc hệ thống bộ test đối kháng cho Bài B (strlexi)
 •	Test 1 (Random Generation): Sinh chuỗi ký tự thường ngẫu nhiên với độ dài biến thiên trong khoảng từ 10 đến 100 ký tự.
 •	Test 2 (Deep Prefix Attack): Tạo ra 100.000 chuỗi có tiền tố dài 99 ký tự giống hệt nhau ('a'), chỉ khác biệt duy nhất ở ký tự cuối cùng thứ 100 để ép Multi-key Quicksort đệ quy sâu chạm đáy.
 •	Test 3 (Sorted Base): Sinh dãy chuỗi số hóa có đệm ký tự 'b' phía trước để lấp đầy độ dài 100 ký tự, sau đó tiến hành sắp xếp tăng dần nhằm đánh bẫy cơ chế chọn pivot biên.
 •	Test 4 (Reverse Sorted / Anti-Median-of-Three): Sử dụng dãy chuỗi số hóa đệm kí tự 'b' tương tự Test 3 nhưng được đảo ngược hoàn toàn thứ tự từ điển để phá hủy cơ chế chọn pivot trung vị.
 •	Test 5 (All Identical Matrix): Toàn bộ 100.000 chuỗi đều mang một giá trị hằng số chứa đúng 100 ký tự 'm' nhằm làm suy biến các thuật toán phân đôi chuỗi thông thường.
+
 3.4. Cấu trúc hệ thống bộ test đối kháng cho Bài C (strlenlexi)
 •	Test 1 (Ascending Length Run): Sinh các chuỗi ký tự lặp lại có độ dài tăng dần tuần hoàn từ 10 đến 100 ký tự.
 •	Test 2 (LSD Inefficiency Trap): Sinh dãy chuỗi có cùng độ dài cố định là 100 ký tự, trong đó 95 ký tự đầu là chuỗi ký tự cố định 's' kết hợp phần đuôi số hóa để vô hiệu hóa hiệu năng quét ngược của LSD Radix Sort chuỗi.
 •	Test 3 (All Minimum Length Matrix): Sinh mảng 10.000 chuỗi đều đạt độ dài ngắn nhất ở mức biên tối thiểu là cố định đúng 10 ký tự.
 •	Test 4 (Length Divergence / Numeric Trap): Tạo cấu trúc dữ liệu đan xen luân phiên liên tục giữa một chuỗi toàn ký tự số '9' (dài 15) và một chuỗi toàn ký tự số '1' (dài 16) nhằm bẫy logic phân loại sai quy chuẩn.
 •	Test 5 (Random Mix): Sinh chuỗi ngẫu nhiên hoàn toàn cả về nội dung ký tự lẫn độ dài chuỗi (biến thiên tự do trong dải từ 10 đến 100) để kiểm tra giới hạn thời gian chạy 1 giây.
+
 3.5. Cơ chế tác động làm tăng thời gian chạy của bộ test
 •	Với bài int (test005.in): Do dữ liệu là bội số của 2^16, toàn bộ phần tử đều có 16 bit thấp bằng 0. Tại Pass 1, tất cả 100.000 số bị dồn cục vào ô nhớ duy nhất count[0], triệt tiêu hoàn toàn tính phân tán dữ liệu.
 •	Với bài strlexi (test002.in): Ép thuật toán Multi-key Quicksort phải gọi đệ quy sâu liên tục chạm đáy 100 tầng hệ thống, đồng thời ép hàm Insertion Sort nội bộ phải so sánh tuần tự toàn bộ 100 ký tự mới phân định được lớn bé.
