@@ -297,7 +297,7 @@ Thuật toán được sử dụng là **Merge Sort** với tiêu chí:
 
 #### 1.5 Lý do thuật toán này tốt nhất ở lần 1
 
-Merge Sort đảm bảo tính ổn định tuyệt đối ($\mathcal{O}(N \log N)$), không bị suy biến. Đồng thời, chia dữ liệu cân bằng giúp hạn chế số phép so sánh dư thừa khi xử lý các chuỗi có prefix giống nhau.
+Merge Sort đảm bảo tính ổn định tuyệt đối (O(Nlog N)), không bị suy biến. Đồng thời, chia dữ liệu cân bằng giúp hạn chế số phép so sánh dư thừa khi xử lý các chuỗi có prefix giống nhau.
 
 ---
 
